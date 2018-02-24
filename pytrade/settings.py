@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC+10'
+TIME_ZONE = 'Australia/Brisbane'
 
 USE_I18N = True
 
