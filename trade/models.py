@@ -10,6 +10,9 @@ class Trader(models.Model):
     balance = models.DecimalField(max_digits=10, decimal_places=2)
     volume = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 class Market(models.Model):
     """
     Represents a market to be traded in.
@@ -18,6 +21,9 @@ class Market(models.Model):
     """
     name = models.CharField(max_length=5)
     traders = models.ManyToManyField(Trader)
+
+    def __str__(self):
+        return self.name
 
 class Order(models.Model):
     """
@@ -30,4 +36,9 @@ class Order(models.Model):
     type = models.CharField(max_length=4)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField()
+
+    def __str__(self):
+        s = "Order({0}, {1}, {2}, {3}, {4})".format(str(self.owner),
+                str(self.market), self.type, self.price, self.quantity)
+        return s
 
