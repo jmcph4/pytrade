@@ -108,4 +108,5 @@ venv.bak/
 msg.tmp
 *.tmp
 *.secret
+*.sqlite3
 
