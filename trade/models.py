@@ -19,3 +19,15 @@ class Market(models.Model):
     name = models.CharField(max_length=5)
     traders = models.ManyToManyField(Trader)
 
+class Order(models.Model):
+    """
+    Represents an order for a given market.
+
+    Essentially wraps PyOBSim's Order class.
+    """
+    owner = models.ForeignKey(Trader, on_delete=models.CASCADE)
+    market = models.ForeignKey(Market, on_delete=models.CASCADE)
+    type = models.CharField(max_length=4)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.IntegerField()
+
