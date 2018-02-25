@@ -6,17 +6,16 @@ class Trader(models.Model):
 
     Essentially wraps PyOBSim's Participant class.
     """
-    name = CharField(unique=True)
-    balance = DecimalField()
-    volume = IntegerField()
+    name = models.CharField(max_length=32, unique=True)
+    balance = models.DecimalField(max_digits=10, decimal_places=2)
+    volume = models.IntegerField()
 
-class Market(models.Models):
+class Market(models.Model):
     """
     Represents a market to be traded in.
 
     Essentially wraps PyOBSim's Book class.
     """
-    name = CharField()
-    traders = ManyToManyField(Market)
-
+    name = models.CharField(max_length=5)
+    traders = models.ManyToManyField(Trader)
 
