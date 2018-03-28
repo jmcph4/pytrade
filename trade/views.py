@@ -45,3 +45,10 @@ class OrderIndexView(generic.ListView):
         """
         return Order.objects.all().filter(active=True).order_by("-created")
 
+class OrderDetailView(generic.DetailView):
+    """
+    Detail view for orders, displays information on particular order
+    """
+    model = Order
+    template_name = "orders/detail.html"
+

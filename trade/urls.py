@@ -8,5 +8,7 @@ urlpatterns = [path("markets/", views.MarketIndexView.as_view(),
                 path("markets/<int:pk>", views.MarketDetailView.as_view(),
                     name="markets_detail"),
                 path("orders/", views.OrderIndexView.as_view(),
-                    name="orders_index")]
+                    name="orders_index"),
+                path("orders/<int:pk>", views.OrderDetailView.as_view(),
+                    name="orders_detail")]
 

@@ -5,6 +5,7 @@
     <table class="orders_table table table-bordered">
         <thead class="thead-light">
             <tr>
+                <th>ID</th>
                 <th>Created</th>
                 <th>Market</th>
                 <th>Type</th>
@@ -15,6 +16,7 @@
         <tbody>
             {% for order in global_orders_list %}
             <tr {% if order.type == "BUY" %} class="table-success" {% else %} class="table-danger" {% endif %}>
+                <td><a href="/trade/orders/{{ order.id }}" title="View Order #{{ order.id }}">{{ order.id }}</a></td>
                 <td>{{ order.created }}</td>
                 <td><a href="/trade/markets/{{ order.market.id }}" title="View Market for {{ order.market }}">{{ order.market }}</a></td>
                 <td>{{ order.type }}</td>

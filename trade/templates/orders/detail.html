@@ -1,0 +1,21 @@
+{% include "header.html" %}
+
+<h1>Order #{{ order.id }}</h1>
+<hr>
+<table class="order_details_table table table-bordered">
+    <tbody> 
+        <tr><td>Active?</td><td>{{ order.active }}</td></tr>
+        <tr><td>Created</td><td>{{ order.created }}</td></tr>
+        {% if order.active == False %}
+            <tr><td>Filled</td><td>{{ order.filled }}</td></tr>
+            <tr><td>Cancelled</td><td>{{ order.cancelled }}</td></tr>
+        {% endif %}
+        <tr><td>Market</td><td><a href="/trade/markets/{{ order.market.id }}" title="View Market for {{ order.market }}">{{ order.market }}</a></td></tr>
+        <tr><td>Type</td><td>{{ order.type }}</td></tr>
+        <tr><td>Price</td><td>${{ order.price }}</td></tr> 
+        <tr><td>Quantity</td><td>{{ order.quantity }}</td></tr>
+    </tbody>
+</table>
+
+{% include "footer.html" %}
+
