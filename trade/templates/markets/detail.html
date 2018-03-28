@@ -2,24 +2,28 @@
 
 <h1>Market for {{ market.name }}</h1>
 
-<table class="order_book_table">
-    <tr>
-        <th>Ask</th><th>Bid</th>
-    </tr>
-    {%for order in orders %}
+<table class="order_book_table table table-bordered table-sm">
+    <thead class="thead-light">
         <tr>
-            <td>
-                {% if order.type == "SELL" %}
-                    <p>${{ order.price }} for {{ order.quantity }}</p>
-                {% endif %}
-            </td>
-            <td>
-                {% if order.type == "BUY" %}
-                    <p>${{ order.price }} for {{ order.quantity }}</p>
-                {% endif %}
-            </td>
+            <th>Ask</th><th>Bid</th>
         </tr>
-    {% endfor %}
+    </thead>
+    <tbody>
+        {%for order in orders %}
+            <tr>
+                <td>
+                    {% if order.type == "SELL" %}
+                        <p>${{ order.price }} for {{ order.quantity }}</p>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if order.type == "BUY" %}
+                        <p>${{ order.price }} for {{ order.quantity }}</p>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 {% include "footer.html" %}

@@ -2,23 +2,27 @@
 
 <h1>Orders</h1>
 {% if global_orders_list %}
-    <table class="orders_table">
-        <tr>
-            <th>Created</th>
-            <th>Market</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Quantity</th>
-        </tr>
-        {% for order in global_orders_list %}
-        <tr>
-            <td>{{ order.created }}</td>
-            <td><a href="/trade/markets/{{ order.market.id }}" title="View Market for {{ order.market }}">{{ order.market }}</a></td>
-            <td>{{ order.type }}</td>
-            <td>{{ order.price }}</td>
-            <td>{{ order.quantity }}</td>
-        </tr>
-    {% endfor %}
+    <table class="orders_table table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Created</th>
+                <th>Market</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in global_orders_list %}
+            <tr {% if order.type == "BUY" %} class="table-success" {% else %} class="table-danger" {% endif %}>
+                <td>{{ order.created }}</td>
+                <td><a href="/trade/markets/{{ order.market.id }}" title="View Market for {{ order.market }}">{{ order.market }}</a></td>
+                <td>{{ order.type }}</td>
+                <td>{{ order.price }}</td>
+                <td>{{ order.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 {% else %}
     <p>No active orders.</p>
