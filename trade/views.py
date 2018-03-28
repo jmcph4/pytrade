@@ -33,3 +33,15 @@ class MarketDetailView(generic.DetailView):
 
         return context
 
+class OrderIndexView(generic.ListView):
+    """
+    """
+    template_name = "orders/index.html"
+    context_object_name = "global_orders_list"
+
+    def get_queryset(self):
+        """
+        Return all active orders, newest to oldest
+        """
+        return Order.objects.all().filter(active=True).order_by("-created")
+

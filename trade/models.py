@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 class Trader(models.Model):
@@ -36,6 +38,20 @@ class Order(models.Model):
     type = models.CharField(max_length=4)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField()
+
+    # metadata
+    active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    filled = models.DateTimeField(blank=True, null=True)
+    cancelled = models.DateTimeField(blank=True, null=True)
+
+    """
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.created = datetime.now()
+
+        return super(Order, self).save(*args, **kwargs)
+    """
 
     def __str__(self):
         s = "Order({0}, {1}, {2}, {3}, {4})".format(str(self.owner),
