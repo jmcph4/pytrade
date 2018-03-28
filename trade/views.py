@@ -3,6 +3,17 @@ from django.views import generic
 
 from .models import Market, Order
 
+class IndexView(generic.ListView):
+    """
+    """
+    template_name = "index.html"
+    context_object_name = ""
+
+    def get_queryset(self):
+        """
+        """
+        return Market.objects.all()
+
 class MarketIndexView(generic.ListView):
     """
     Index view for the markets
