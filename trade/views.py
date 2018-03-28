@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
-from .models import Market
+from .models import Market, Order
 
 class MarketIndexView(generic.ListView):
     """
@@ -22,4 +22,14 @@ class MarketDetailView(generic.DetailView):
     """
     model = Market
     template_name = "markets/detail.html"
+
+    def get_context_data(self, **kwargs):
+        # get default context data
+        context = super(MarketDetailView, self).get_context_data(**kwargs)
+        
+        # add order list to context data
+        market_id = context["market"].id
+        context["orders"] = Order.objects.filter(market=market_id).order_by("-type")
+
+        return context
 
