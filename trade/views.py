@@ -29,7 +29,7 @@ class MarketDetailView(generic.DetailView):
         
         # add order list to context data
         market_id = context["market"].id
-        context["orders"] = Order.objects.filter(market=market_id).order_by("-type")
+        context["orders"] = Order.objects.filter(market=market_id, active=True).order_by("-type")
 
         return context
 
