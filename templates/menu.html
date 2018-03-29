@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#">PyTrade</a>
+	<a class="navbar-brand" href="/">PyTrade</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -15,6 +15,18 @@
       		<li class="nav-item">
         		<a class="nav-link" href="/trade/orders">Orders</a>
       		</li>
+        </ul>
+        
+        <ul class="navbar-nav mr-auto accounts_menu">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/logout">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/login">Login</a>
+                </li>
+            {% endif %}
     	</ul>
   	</div>
 </nav>
