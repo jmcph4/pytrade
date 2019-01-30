@@ -63,3 +63,10 @@ class OrderDetailView(generic.DetailView):
     model = Order
     template_name = "orders/detail.html"
 
+class OrderCreateView(generic.CreateView):
+    """
+    """
+    model = Order
+    fields = ["owner", "market", "type", "price", "quantity"]
+    template_name = "orders/order_form.html"
+
