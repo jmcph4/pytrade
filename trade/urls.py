@@ -13,6 +13,6 @@ urlpatterns = [path("", views.IndexView.as_view(),
                     name="orders_index"),
                 path("orders/<int:pk>", views.OrderDetailView.as_view(),
                     name="orders_detail"),
-                path("orders/create/", views.OrderCreateView.as_view(),
+                path("orders/create/", views.OrderCreateView.as_view(success_url="/"),
                     name="orders_create")]
 
