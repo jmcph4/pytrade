@@ -113,5 +113,9 @@ class OrderCreateView(generic.CreateView):
                 corresponding_order.filled = datetime.datetime.now()
                 corresponding_order.save()
 
+        # update current market price
+        book_from_db.price = book.LTP
+        book_from_db.save()
+
         return response
 

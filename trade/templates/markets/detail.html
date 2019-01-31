@@ -2,6 +2,8 @@
 
 <h1>Market for {{ market.name }}</h1>
 
+<h2>${{ market.price  }}</h2>
+
 <table class="order_book_table table table-bordered table-sm">
     <thead class="thead-light">
         <tr>
@@ -9,15 +11,15 @@
         </tr>
     </thead>
     <tbody>
-        {%for order in orders %}
+        {% for order in orders %}
             <tr>
                 <td>
-                    {% if order.type == "SELL" %}
+                    {% if order.type == "ASK" %}
                         <p>${{ order.price }} for {{ order.quantity }}</p>
                     {% endif %}
                 </td>
                 <td>
-                    {% if order.type == "BUY" %}
+                    {% if order.type == "BID" %}
                         <p>${{ order.price }} for {{ order.quantity }}</p>
                     {% endif %}
                 </td>
